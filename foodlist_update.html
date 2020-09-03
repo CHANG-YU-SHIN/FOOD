@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html>
+<title>修改資料</title>
+	<head>
+	{% load static %}
+	
+
+<!--CSS語法-->		
+<style> 
+body {
+color: #880000;
+background-color: #FFDEA1 ;
+font-family:DFKai-sb, "標楷體";
+font-size: 20px;
+}
+h1 {
+    color: #A42D00;
+    text-align: center;
+	font-family: Georgia, "微軟正黑體";
+}
+
+.button{
+    background-color: #C63300;
+    border: none;
+    color: #FFD4D4;
+    padding: 8px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.button:hover{background-color:	#FF5511; text-decoration:none;} /*hover為滑鼠移入變色功能*/
+
+table {
+    border-collapse: center;
+	background-color: white;
+	}
+
+table, td{    
+    border: 2px solid #FF8888;
+    text-align: center;
+}
+
+input[type=text] {
+    border: 2px solid white;
+    background-color: white;
+    color: #A42D00;	
+	font-size:18px;
+	font-family: Georgia, "微軟正黑體";
+    width: 400px;
+    padding: 4px 20px;
+    box-sizing: border-box;
+}
+
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 180px;
+    height: 100px;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+	
+
+	
+/* Tooltip 文本 */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #C63300;
+    color: white;
+	font-size: 12px;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* 定位 */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+</style>
+	
+	</head>
+	<body>
+	
+	
+	<h1><span style="font-family:DFKai-sb;">修改資料</span></h1>
+		<form action="/foodlist_do_update/" method="POST">{% csrf_token %}
+			
+			<table border=1 style="	position:absolute;top:100px;left:570px;" >
+				<tr style="display:none;">
+					<td>時間<br>number</td>
+					<td class="tooltip"><input type="text" name="number"  >
+					<span class="tooltiptext">number</span>
+					</td>
+				</tr>
+				<tr>
+					<td>菜系<br>(範例:歐陸，日韓，美墨，南洋，中華)</td>
+					<td class="tooltip"><input type="text" name="cuisine" value="{{ foodlist_update.cuisine }}">
+					<span class="tooltiptext">在此處修改菜系</span>
+					</td>
+
+				</tr>
+				<tr>
+					<td>店名<br></td>
+					<td class="tooltip"><input type="text" name="name" value="{{ foodlist_update.name }}">
+					<span class="tooltiptext">在此處修改店名</span>
+					</td>
+				</tr>
+				<tr>
+					<td>地址</td>
+					<td class="tooltip"><input type="text" name="add" value="{{ foodlist_update.add }}" >
+					<span class="tooltiptext">在此處修改地址</span></td>
+				</tr>
+				<tr>
+					<td>電話</td>
+					<td class="tooltip"><input type="text" name="tel" value="{{ foodlist_update.tel }}" >
+					<span class="tooltiptext">在此處修改電話</span></td>	
+				</tr>
+				<tr>
+					<td>網址</td>
+					<td class="tooltip"><input type="text" name="url" value="{{ foodlist_update.url }}">
+					<span class="tooltiptext">在此處修改網址</span>
+					</td>
+				</tr>
+				<tr>
+					<td>備註</td>
+					<td class="tooltip"><input type="text" name="other" value="{{ foodlist_update.other }}">
+					<span class="tooltiptext">在此處修改備註</span>
+					</td>	
+				</tr>
+				
+             </table>
+			     
+			 
+				<tr>
+					<td><input type="submit" class="button" value="Save" style="position:absolute;top:420px;left:1260px;"></td>
+					<td><input type="hidden" name="desc" value="{{ foodlist_update.desc }}"></td>
+				</tr>	
+				<tr>
+					<td><a href="/index_select" style="position:absolute;top:425px;left:1160px;">返回主頁面</a></td>
+				</tr>
+					
+		</form>
+		
+
+	</body>	
+</html>

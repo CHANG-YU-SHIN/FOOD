@@ -1,0 +1,84 @@
+<html>
+<title>新增資料</title>
+<head>
+{%load static%}
+
+<style>
+h1 { text-align : center ;}
+/*改變表格邊框顏色及樣式*/
+table, td, th {border: 5px solid #8B4513;text-align: left;}   /*框線粗細及顏色、表格內文字位置*/
+table {border-collapse: collapse;width: 47%;}                 /*框線樣式及表格寬度*/
+th, td {padding: 15px;}
+/*改變新增按鈕顏色及樣式*/
+input[type=submit] {
+  background-color: white;         /*按鈕背景顏色*/
+  color: brown;                    /*按鈕內文字顏色*/
+  border: 2px solid #FFE4B5;       /*按鈕邊框粗細及顏色*/
+  padding: 14px 25px ;             /*按鈕大小*/
+  text-align: center;              /*按鈕內文字的位置*/
+  display: inline-block;           /*按鈕內文字在同行顯示*/
+}
+
+
+input[type=submit]:hover {
+  background-color: #FFE4B5;
+}
+</style>
+  <meta charset="utf-8">
+</head>
+<body background={% static "./figures/03.jpg" %} style="background-size:100% 100%; background-repeat:no-repeat;">
+	<body>
+		<h1 style="color:blue;">新增資料</h1>
+		<form action="/foodlist_do_insert/" method="POST">{% csrf_token %}
+			<center>
+			<table border="1">
+	<tr>
+					<td>1.菜系 (範例:歐陸，日韓，美墨，南洋，中華)</td>
+					<td><input type="text" name="cuisine" ></td>
+				</tr>
+				<tr>
+					<td>2.店名</td>
+					<td><input type="text" name="name"></td>
+				</tr>
+				<tr>
+					<td>3.地址</td>
+					<td><input type="text" name="add"></td>
+				</tr>
+				<tr>
+					<td>4.電話</td>
+					<td><input type="text" name="tel"></td>	
+				</tr>
+				<tr>
+					<td>5.網址</td>
+					<td><input type="text" name="url"></td>
+				</tr>
+				<tr>
+					<td>6.備註</td>
+					<td><input type="text" name="other"></td>	
+				</tr>
+				<tr>
+				</table></center>
+				<tr>
+					<td><input type="submit" value="新增"></td>
+				</tr>	
+				<br>
+				<tr>
+					<td><a href="/index_select">返回清單</a></td>
+				</tr>
+			</table><center>
+		</form>
+	</body>	
+</html>
+<script>
+function ShowTime(){
+　var NowDate=new Date();
+　var h=NowDate.getHours();
+　var m=NowDate.getMinutes();
+　var s=NowDate.getSeconds();　
+　document.getElementById('showbox').innerHTML ='現在時間:'+h+'時'+m+'分'+s+'秒';
+　setTimeout('ShowTime()',1000);
+}
+</script>
+<body onload="ShowTime()">
+<div id="showbox"></div>
+</body>

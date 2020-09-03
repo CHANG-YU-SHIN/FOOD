@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	
+<title>刪除資料</title>
+
+
+	<head>
+{% load static %}
+		<meta charset="utf-8">
+	<style>
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity:1.0;
+    filter:alpha(opacity=40);
+	font-weight: bold;
+}
+	</style>
+
+	</head>
+<body background={% static "./figures/03.jpg" %}>
+<!--<img src='{% static "./myapp/03.jpg" %}' >-->
+        
+
+<div style="text-align:center;"><h1 style="color:red;">刪除店面資料</h1>
+
+
+
+<script language="JavaScript">
+window.onload=function(){
+var bt=document.getElementById("delete");
+bt.onclick=function(){
+if(confirm("確定要刪除嗎?")){
+alert("點擊確定按鈕");
+     }
+     else{
+    alert("點擊取消按钮");
+   }
+  }
+}
+
+
+
+ 
+</script>
+
+</body>
+	
+		<form action="/foodlist_do_delete/" method="POST" >{% csrf_token %}
+				
+			<center><table style="border:8px #FFD382 groove;" cellpadding="10" border="1">
+				
+				<tr>
+					<td>1.菜系 (範例:歐陸，日韓，美墨，南洋，中華)</td>
+					<td><input type="text" name="cuisine" value="{{foodlist_delete.cuisine}}"></td>
+				</tr>
+				<tr>
+					<td>2.店名</td>
+					<td><input type="text" name="name" value="{{foodlist_delete.name}}"></td>
+				</tr>
+				<tr>
+					<td>3.地址</td>
+					<td><input type="text" name="add" value="{{foodlist_delete.add}}"></td>
+				</tr>
+				<tr>
+					<td>4.電話</td>
+					<td><input type="text" name="tel" value="{{foodlist_delete.tel}}"></td>	
+				</tr>
+				<tr>
+					<td>5.網址</td>
+					<td><input type="text" name="url" value="{{foodlist_delete.url}}"></td>
+				</tr>
+				<tr>
+					<td>6.備註</td>
+					<td><input type="text" name="other" value="{{foodlist_delete.other}}"></td>	
+				</tr>
+				<tr>
+				</table></center>
+ 
+                <tr>
+                     <td><input type="submit" id="delete" value="刪除"  onclick="window.onload"></td>
+	            </tr>
+	            
+				<tr>
+					<td><a href="/index_select">返回清單</a></td>
+				</tr>
+               </div>
+		</form>
+		
+	</body>	
+</html>

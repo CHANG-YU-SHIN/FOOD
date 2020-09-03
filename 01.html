@@ -1,0 +1,96 @@
+
+<html>
+
+
+<head>
+ {% load static %}  
+
+
+
+</head><!-- 增加這一列 -->
+<body style="background-image: url('{% static "./figures/03.jpg" %}'">
+  
+  <figure style="float: left;">
+  <img src="{% static 'figures/01.jpg' %}" alt="candy" width="304" height="228"  style="margin: 15px">
+  </figure>
+<title>G07 food</title>
+
+<font color="blue" size="5" >菜系</font>
+
+<form action="" method="POST">{% csrf_token %}
+	  <select name="europe">
+	    <option value="歐陸">歐陸</option>
+	    <option value="中華">中華</option>
+	    <option value="日韓">日韓</option>
+	    <option value="美墨">美墨</option>
+	    <option value="南洋">南洋</option>
+	 </select>
+<tr><td>
+<font color="purple" size="5">台北區域</font>
+    <select name="area" id="area">
+      <option value="中正區">中正區</option>
+      <option value="大安區">大安區</option>
+      <option value="天母區">天母區</option>
+      <option value="松山區">松山區</option>
+      <option value="士林區">士林區</option>
+      <option value="南港區">南港區</option>
+      <option value="大同區">大同區</option>
+      <option value="中山區">中山區</option>
+      <option value="萬華區">萬華區</option>
+      <option value="信義區">信義區</option>
+      <option value="北投區">北投區</option>
+      <option value="內湖區">內湖區</option>
+      <option value="文山區">文山區</option>
+    </select>
+ </td>
+ </tr>
+	  <input type="submit" value="查詢">
+</form>
+
+
+
+<p>目前總共有 {{index_selects | length}} 筆資料</p>
+
+<table width="1300" border="1">
+ <tr>
+    <th><span style="font-family:DFKai-sb;">菜系</span></th>
+    <td><span style="font-family:DFKai-sb;">餐廳名稱</span></td>
+    <td><span style="font-family:DFKai-sb;">餐廳地址</span></td>
+    <td><span style="font-family:DFKai-sb;">餐廳電話</span></td>
+    <td><span style="font-family:DFKai-sb;">網址</span></td>
+    <td><span style="font-family:DFKai-sb;">備註</span></td>
+	</tr>
+	
+	{% for n in index_selects %}
+<tr>
+	<td>{{n.cuisine}}</td>
+	<td>{{n.name}}</td>
+	<td>{{n.add}}</td>
+	<td>{{n.tel}}</td>
+	<td><a href="{{n.url}}"</a>{{n.url}}</td>
+	<td> {{n.other}}</td>
+	 <td>
+    <a href="/foodlist_insert/">新增資料</a></br>
+    <a href="/foodlist_update/{{ n.add }}">修改資訊</a></br>
+    <a href="/foodlist_delete/{{ n.add }}">刪除此筆</a></br>
+  </td>
+</tr>
+{% endfor %}
+</table>
+<p>&nbsp;</p>
+
+	
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

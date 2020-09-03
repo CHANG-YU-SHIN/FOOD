@@ -1,0 +1,109 @@
+
+<html>
+
+<script>
+function TempTrans() { 
+document.getElementById("result").innerHTML = "<table border=1>"+
+"<tr>"+"<td>"+"<br>縣市區域為： "+"<td>" + document.getElementById("area").value +"</td>"+"</tr>"+"</td>";
+"</table>"
+}
+</script>
+<head>
+ {% load static %}  
+
+
+
+</head><!-- 增加這一列 -->
+<body style="background-image: url('{% static "./figures/03.jpg" %}'">
+  
+  <figure style="float: left;">
+                    <img src="{% static 'figures/01.jpg' %}" alt="百子蓮" width="304" height="228"  style="margin: 15px">
+  </figure>
+ 
+<title>05170942張又心</title>
+<form>
+<table >
+<tr>
+<td>
+<font color="blue" size="5" >菜系</font>
+<form action="" method="POST">
+	  <input type="checkbox" name="europe" value="歐陸" checked>歐陸
+      <input type="checkbox" name="JK" value="日韓"> 日韓
+      <input type="checkbox" name="CHINA" value="中華"> 中華
+      <input type="checkbox" name="AM" value="美墨"> 美墨
+      <input type="checkbox" name="T" value="南洋"> 南洋
+</form>
+    <br></td>
+</tr>
+<tr>
+<td>
+<font color="purple" size="5">台北區域</font>
+<select name="area" id="area">
+ <option value="中正區">中正區</option>
+ <option value="大安區">大安區</option>
+ <option value="天母區">天母區</option>
+ <option value="松山區">松山區</option>
+ <option value="士林區">士林區</option>
+ <option value="南港區">南港區</option>
+ <option value="大同區">大同區</option>
+ <option value="中山區">中山區</option>
+ <option value="萬華區">萬華區</option>
+ <option value="信義區">信義區</option>
+ <option value="北投區">北投區</option>
+ <option value="內湖區">內湖區</option>
+ <option value="文山區">文山區</option>
+ </select>
+</td>
+ 
+ </td>
+ </tr>
+ 
+<button type="button" onclick="TempTrans()" style="background: -webkit-linear-gradient(yellow,orange);
+background: -o-linear-gradient(yellow,orange);
+background: -moz-linear-gradient(yellow,orange);
+background: linear-gradient(yellow,orange);
+height:50px;width:100px;border-radius:10px"><font color="black">簡易搜尋</font></button>
+
+</td>
+</table>
+<font color="red" size="8">以上網站僅供參考</font>
+</body>
+<body>
+<p>
+
+</p>
+<table width="700" border="1">
+  <tr>
+    <th><span style="font-family:DFKai-sb;">菜系</span></th>
+    <td><span style="font-family:DFKai-sb;">餐廳名稱</span></td>
+    <td><span style="font-family:DFKai-sb;">餐廳地址</span></td>
+    <td><span style="font-family:DFKai-sb;">餐廳電話</span></td>
+    <td><span style="font-family:DFKai-sb;">網址</span></td>
+    <td><span style="font-family:DFKai-sb;">備註</span></td>
+	</tr>
+	{% for n in foodlist %}
+<tr>
+	<td>{{n.cuisine}}</td>
+	<td>{{n.name}}</td>
+	<td>{{n.add}}</td>
+	<td>{{n.tel}}</td>
+	<td>{{n.url}}</td>
+	<td>{{n.other}}</td>
+</tr>
+{% endfor %}
+</table>
+<p>&nbsp;</p>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
